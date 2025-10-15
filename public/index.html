@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sensor Dashboard</title>
+<style>
+body { font-family: Arial; margin:0; background:#f4f6f8; color:#222; transition:0.3s; }
+body.dark { background:#1c1c1c; color:#f4f6f8; }
+header { background:#1e88e5; color:white; padding:20px; text-align:center; font-size:24px; }
+#sensors { display:flex; flex-wrap:wrap; justify-content:center; margin:20px; gap:15px; }
+.card { background:#66bb6a; color:white; padding:15px 25px; border-radius:12px; text-align:center; min-width:140px; flex:1; transition:0.3s; }
+.card.red { background:#e53935; }
+.card.yellow { background:#fdd835; color:black; }
+canvas { display:block; margin:20px auto; background:white; border-radius:12px; max-width:90%; transition:0.3s; }
+canvas.dark { background:#2c2c2c; }
+button { margin:10px auto; display:block; padding:10px 20px; border:none; border-radius:8px; background:#f57c00; color:white; cursor:pointer; font-size:16px; }
+#stats { text-align:center; margin-top:10px; }
+.toast { position:fixed; top:20px; right:20px; background:#e53935; color:white; padding:10px 15px; border-radius:8px; display:none; z-index:1000; }
+</style>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header>Sensor Dashboard</header>
+
+<div id="sensors"></div>
+<div id="chartsContainer"></div>
+<div id="stats"></div>
+
+<button id="resetBtn">Reset Charts</button>
+<button id="toggleThemeBtn">Toggle Dark/Light</button>
+
+<div id="toast" class="toast">Alert!</div>
+
+<script src="app.js"></script>
+</body>
+</html>
